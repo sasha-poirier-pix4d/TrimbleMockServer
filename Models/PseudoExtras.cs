@@ -20,10 +20,10 @@ namespace PseudoExtras {
     record Satellite(
         int Id,  int Elv, int Azm, int Snr, bool Use, SatelliteType Type
     ) {
-        public static Array Values = Enum.GetValues(typeof(SatelliteType));
+        public static SatelliteType[] Values = (SatelliteType[]) Enum.GetValues(typeof(SatelliteType));
         private static readonly Random RNG = new ();
         public static Satellite RandomSatellite() {
-            return new Satellite(Id: RNG.Next(),Elv: RNG.Next(0, 180), Azm: RNG.Next(0, 360), Snr: RNG.Next(0, 120), true, (SatelliteType)Values.GetValue(RNG.Next(Values.Length)));
+            return new Satellite(Id: RNG.Next(),Elv: RNG.Next(0, 180), Azm: RNG.Next(0, 360), Snr: RNG.Next(0, 120), true, Values[RNG.Next(Values.Length)]);
         }
         public static Satellite[] RandomSatellites() {
             var satellites = new Satellite[RNG.Next(0, 10)];
