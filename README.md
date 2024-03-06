@@ -9,3 +9,15 @@ With .NET installed, run:
 This should start the server on `localhost:9635`
 
 You can use something like [this website](https://piehost.com/websocket-tester) to test the websocket.
+
+## Use with device
+
+Change the following line in Properties/launchSettings.json:
+
+`"applicationUrl": "http://localhost:9635"`
+
+to the IP of your machine, i.e.
+
+`"applicationUrl": "http://10.42.20.132:9635",`
+
+Both machines need to be on the same network, unless you configure your network otherwise.
