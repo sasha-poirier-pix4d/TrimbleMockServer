@@ -2,7 +2,6 @@ using System.Net;
 using System.Net.WebSockets;
 using System.Text;
 using System.Text.Json;
-using System.IO;
 using PseudoExtras;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,12 +14,22 @@ app.Map("/", async context =>
     if (context.WebSockets.IsWebSocketRequest)
     {
         using var ws = await context.WebSockets.AcceptWebSocketAsync();
-
+        
+        int count = 0;
+        DiffStatus status = DiffStatus.Autonomous;
         while (true)
         {
-            //string msg = File.ReadAllText(@"./test-data/test.json");
-            PseudoExtrasMessage extras = PseudoExtrasMessage.MakeNearMalley();
-
+            if (count >= 5) {
+                count = 0;
+                status = status switch {
+                    DiffStatus.Autonomous => DiffStatus.DGPS,
+                    DiffStatus.DGPS => DiffStatus.Float,
+                    DiffStatus.Float => DiffStatus.Fixed,
+                    DiffStatus.Fixed => DiffStatus.Autonomous,
+                    _ => DiffStatus.Autonomous
+                };
+            }
+            PseudoExtrasMessage extras = PseudoExtrasMessage.MakeNearMalley(status);
             string t = JsonSerializer.Serialize(extras);
             var bytes = Encoding.UTF8.GetBytes(t);
             var arraySegment = new ArraySegment<byte>(bytes, 0, bytes.Length);
@@ -38,6 +47,7 @@ app.Map("/", async context =>
                 break;
             }
             Thread.Sleep(5000);
+            count++;
         }
     }
     else 
