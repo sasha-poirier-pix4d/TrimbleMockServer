@@ -46,8 +46,8 @@ app.Map("/", async context =>
                 Console.WriteLine("WebSocket connection closed");
                 break;
             }
-            Thread.Sleep(5000);
             count++;
+            Thread.Sleep(1000);
         }
     }
     else 
