@@ -76,20 +76,20 @@ namespace PseudoExtras {
                     accuracy = Convert.ToSingle(3F + random.NextDouble());
                     accuracyVertical = Convert.ToSingle(4F + random.NextDouble());
                     hdop = pdop = vdop = 2F;
-                    vrms = Convert.ToSingle(4F + random.NextDouble());
+                    hrms = Convert.ToSingle(4F + random.NextDouble());
                     vrms = Convert.ToSingle(3F + random.NextDouble());
                     break;
                 case DiffStatus.DGPS:
                     accuracy = Convert.ToSingle(1F + random.NextDouble());
                     accuracyVertical = Convert.ToSingle(2F + random.NextDouble());
-                    vrms = Convert.ToSingle(3F + random.NextDouble());
+                    hrms = Convert.ToSingle(3F + random.NextDouble());
                     vrms = Convert.ToSingle(2F + random.NextDouble());
                     hdop = pdop = vdop = 1F;
                     break;
                 case DiffStatus.Float:
                     accuracy = accuracyVertical = Convert.ToSingle(random.NextDouble());
                     vrms = Convert.ToSingle(random.NextDouble());
-                    vrms = Convert.ToSingle(random.NextDouble());
+                    hrms = Convert.ToSingle(random.NextDouble());
                     hdop = pdop = vdop = .2F;
                     break;
                 case DiffStatus.Fixed:
