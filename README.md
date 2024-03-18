@@ -20,4 +20,6 @@ to the IP of your machine, i.e.
 
 `"applicationUrl": "http://10.42.20.132:9635",`
 
+On macOS, you can use the following command to find your IP: `ipconfig getifaddr en0`
+
 Both machines need to be on the same network, unless you configure your network otherwise.
