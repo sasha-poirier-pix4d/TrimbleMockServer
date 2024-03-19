@@ -8,7 +8,7 @@ With .NET installed, run:
 
 This should start the server on `localhost:9635`
 
-You can use something like [this website](https://piehost.com/websocket-tester) to test the websocket.
+You can use something like [this website](https://piehost.com/websocket-tester) or use their [browser extension](https://chromewebstore.google.com/detail/piesocket-websocket-teste/oilioclnckkoijghdniegedkbocfpnip) to test the websocket.
 
 ## Use with device
 
